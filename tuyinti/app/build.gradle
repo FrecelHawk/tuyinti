@@ -17,6 +17,7 @@ allprojects{
 
 
 apply plugin: 'com.android.application'
+
 android {
     compileSdkVersion 24
     buildToolsVersion "25.0.2"
@@ -52,6 +53,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-vector-drawable:25.3.1'
+    compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'org.xutils:xutils:3.5.0'
     testCompile 'junit:junit:4.12'
+    compile 'com.android.support:gridlayout-v7:25.3.1'
 }

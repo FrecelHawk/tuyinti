@@ -6,6 +6,7 @@ package org.tuyinti;
  */
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
 
 import org.xutils.x;
 
@@ -15,5 +16,6 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         x.view().inject(this);
+
     }
 }
