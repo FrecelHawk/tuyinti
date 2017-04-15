@@ -86,6 +86,11 @@ public class MessageFragment extends BaseFragment{
     }
 
     @Override
+    public boolean onActivityBackPress() {
+        return false;
+    }
+
+    @Override
     public void onListFragmentInteraction(DummyItem item) {
 
     }

@@ -15,38 +15,28 @@ import org.tuyinti.dummy.DummyContent;
 public class MainActivity extends AppCompatActivity {
 
 
-    private Fragment mFragment,cFragment,clFragment,msFragment,sFragment;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-           // hideAllFragment(transaction);
-            Boolean flag = false;
-            Fragment fragment;
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             switch (item.getItemId()) {
                 case R.id.navigation_message:
-                         fragment = MessageFragment.newInstance(10);
-                        transaction.replace(R.id.content,fragment).commit();
-                    break;
+                      showFragment(new MessageFragment());
+                    return true;
                 case R.id.navigation_contact:
-                         fragment =ContactFragment.newInstance(10);
-                         transaction.replace(R.id.content,fragment).commit();
-                    break;
+                       showFragment(new ContactFragment());
+                    return true;
                 case R.id.navigation_coloring:
-                         fragment = new ColoringFragment();
-                         transaction.replace(R.id.content,fragment).commit();
-                    break;
+                       showFragment(new ColoringFragment());
+                    return true;
                 case R.id.navigation_music:
-                    fragment = new MusicFragment();
-                         transaction.replace(R.id.content,fragment).commit();
-                    break;
+                    showFragment(new MusicFragment());
+                    return true;
                 case R.id.navigation_sports:
-                    fragment = new SprotsFragment();
-                         transaction.replace(R.id.content,fragment).commit();
-                    break;
+                    showFragment(new SprotsFragment());
+                    return true;
             }
             return true;
         }
@@ -69,12 +59,10 @@ public class MainActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    private void hideAllFragment(FragmentTransaction fragmentTransaction){
-        if(mFragment != null)fragmentTransaction.hide(mFragment);
-        if(cFragment != null)fragmentTransaction.hide(cFragment);
-        if(clFragment != null)fragmentTransaction.hide(clFragment);
-        if(msFragment != null)fragmentTransaction.hide(msFragment);
-        if(sFragment != null)fragmentTransaction.hide(sFragment);
+    private void showFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content, fragment).commit();
     }
 
 }

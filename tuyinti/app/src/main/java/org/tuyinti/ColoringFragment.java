@@ -80,4 +80,9 @@ public class ColoringFragment extends BaseFragment {
         super.onDetach();
     }
 
+    @Override
+    public boolean onActivityBackPress() {
+        return false;
+    }
+
 }

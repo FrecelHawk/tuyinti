@@ -76,4 +76,9 @@ public class SprotsFragment extends BaseFragment {
         super.onDetach();
     }
 
+    @Override
+    public boolean onActivityBackPress() {
+        return false;
+    }
+
 }
