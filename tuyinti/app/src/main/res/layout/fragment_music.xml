@@ -5,6 +5,9 @@
     android:layout_height="match_parent"
     android:background="#d9d9d9">
 
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,6 +17,8 @@
             layout="@layout/navigation_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+
 
         <org.tuyinti.view.ImageCycleView
             android:id="@+id/icv_topView"
@@ -26,7 +31,7 @@
         <com.arlib.floatingsearchview.FloatingSearchView
             android:id="@+id/floating_search_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="104dp"
             app:floatingSearch_close_search_on_keyboard_dismiss="false"
             app:floatingSearch_dimBackground="false"
             app:floatingSearch_dismissOnOutsideTouch="true"
@@ -42,18 +47,19 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/search_results_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
             android:clipToPadding="false"
+            android:visibility="gone"
             android:paddingTop="60dp" />
 
 
         <include
-                android:id="@+id/content_layout_first"
-                 layout="@layout/content_layout"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"/>
+            android:id="@+id/content_layout_first"
+            layout="@layout/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <include
             android:id="@+id/content_layout_second"
@@ -62,6 +68,7 @@
             android:layout_height="wrap_content"/>
 
 
-    </LinearLayout>
 
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>
