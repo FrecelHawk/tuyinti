@@ -49,6 +49,19 @@
             android:paddingTop="60dp" />
 
 
+        <include
+                android:id="@+id/content_layout_first"
+                 layout="@layout/content_layout"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"/>
+
+        <include
+            android:id="@+id/content_layout_second"
+            layout="@layout/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
