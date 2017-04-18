@@ -3,7 +3,7 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d9d9d9">
+    android:background="#FFFFFF">
 
 <android.support.v4.widget.NestedScrollView
     android:layout_width="match_parent"
@@ -23,7 +23,7 @@
         <org.tuyinti.view.ImageCycleView
             android:id="@+id/icv_topView"
             android:layout_width="match_parent"
-            android:layout_height="180dp">
+            android:layout_height="wrap_content">
 
         </org.tuyinti.view.ImageCycleView>
 
@@ -31,7 +31,7 @@
         <com.arlib.floatingsearchview.FloatingSearchView
             android:id="@+id/floating_search_view"
             android:layout_width="match_parent"
-            android:layout_height="71dp"
+            android:layout_height="wrap_content"
             app:floatingSearch_close_search_on_keyboard_dismiss="false"
             app:floatingSearch_dimBackground="false"
             app:floatingSearch_dismissOnOutsideTouch="true"
@@ -52,7 +52,7 @@
             android:layout_marginStart="5dp"
             android:clipToPadding="false"
             android:visibility="gone"
-            android:paddingTop="60dp" />
+            android:paddingTop="100dp" />
 
 
         <include
@@ -67,6 +67,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        app:srcCompat="@drawable/main_item_first" />
+
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:srcCompat="@drawable/main_item_second" />
 
 
     </LinearLayout>

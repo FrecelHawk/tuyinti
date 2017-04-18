@@ -28,6 +28,7 @@ import org.tuyinti.adapter.SearchResultsListAdapter;
 import org.tuyinti.data.ColorSuggestion;
 import org.tuyinti.data.ColorWrapper;
 import org.tuyinti.data.DataHelper;
+import org.tuyinti.utils.ResourceUtils;
 import org.tuyinti.view.ImageCycleView;
 
 import java.util.ArrayList;
@@ -137,6 +138,30 @@ public class MusicFragment extends BaseFragment {
         mSearchView = (FloatingSearchView) view.findViewById(R.id.floating_search_view);
         mSearchResultsList = (RecyclerView) view.findViewById(R.id.search_results_list);
         mImageCycleView = (ImageCycleView) view.findViewById(R.id.icv_topView);
+        //Tab2
+        ((TextView)(view.findViewById(R.id.content_layout_first).findViewById(R.id.tab2).findViewById(R.id.viewTxt))).setText("题库");
+        ((ImageView)(view.findViewById(R.id.content_layout_first).findViewById(R.id.tab2).findViewById(R.id.imageView5))).setImageDrawable(ResourceUtils.getDrawable(R.drawable.yinyue2));
+        //Tab3
+        ((TextView)(view.findViewById(R.id.content_layout_first).findViewById(R.id.tab3).findViewById(R.id.viewTxt))).setText("资讯");
+        ((ImageView)(view.findViewById(R.id.content_layout_first).findViewById(R.id.tab3).findViewById(R.id.imageView5))).setImageDrawable(ResourceUtils.getDrawable(R.drawable.yinyue3));
+        //Tab4
+        ((TextView)(view.findViewById(R.id.content_layout_first).findViewById(R.id.tab4).findViewById(R.id.viewTxt))).setText("抢单");
+        ((ImageView)(view.findViewById(R.id.content_layout_first).findViewById(R.id.tab4).findViewById(R.id.imageView5))).setImageDrawable(ResourceUtils.getDrawable(R.drawable.yinyue4));
+        //Tab5
+        ((TextView)(view.findViewById(R.id.content_layout_second).findViewById(R.id.tab1).findViewById(R.id.viewTxt))).setText("动态");
+        ((ImageView)(view.findViewById(R.id.content_layout_second).findViewById(R.id.tab1).findViewById(R.id.imageView5))).setImageDrawable(ResourceUtils.getDrawable(R.drawable.yinyue5));
+        //Tab6
+        ((TextView)(view.findViewById(R.id.content_layout_second).findViewById(R.id.tab2).findViewById(R.id.viewTxt))).setText("学习");
+        ((ImageView)(view.findViewById(R.id.content_layout_second).findViewById(R.id.tab2).findViewById(R.id.imageView5))).setImageDrawable(ResourceUtils.getDrawable(R.drawable.yinyue6));
+        //Tab7
+        ((TextView)(view.findViewById(R.id.content_layout_second).findViewById(R.id.tab3).findViewById(R.id.viewTxt))).setText("共享");
+        ((ImageView)(view.findViewById(R.id.content_layout_second).findViewById(R.id.tab3).findViewById(R.id.imageView5))).setImageDrawable(ResourceUtils.getDrawable(R.drawable.yinyue7));
+        //Tab8
+        ((TextView)(view.findViewById(R.id.content_layout_second).findViewById(R.id.tab4).findViewById(R.id.viewTxt))).setText("活动");
+        ((ImageView)(view.findViewById(R.id.content_layout_second).findViewById(R.id.tab4).findViewById(R.id.imageView5))).setImageDrawable(ResourceUtils.getDrawable(R.drawable.yinyue8));
+
+
+
         setListImage();
         setupFloatingSearch();
         setupResultsList();

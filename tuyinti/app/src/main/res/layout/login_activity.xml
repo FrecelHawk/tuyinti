@@ -107,6 +107,7 @@
         android:weightSum="1">
 
         <TextView
+            android:id="@+id/sing_up_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

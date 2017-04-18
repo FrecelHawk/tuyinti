@@ -1,13 +1,90 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.tuyinti.SprotsFragment">
+    android:background="#FFFFFF">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/sprots" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-</FrameLayout>
+            <include
+                layout="@layout/navigation_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <org.tuyinti.view.ImageCycleView
+                android:id="@+id/icv_topView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </org.tuyinti.view.ImageCycleView>
+
+
+            <com.arlib.floatingsearchview.FloatingSearchView
+                android:id="@+id/floating_search_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:floatingSearch_close_search_on_keyboard_dismiss="false"
+                app:floatingSearch_dimBackground="false"
+                app:floatingSearch_dismissOnOutsideTouch="true"
+                app:floatingSearch_menu="@menu/menu_search_view"
+                app:floatingSearch_searchBarMarginLeft="@dimen/search_view_inset"
+                app:floatingSearch_searchBarMarginRight="@dimen/search_view_inset"
+                app:floatingSearch_searchBarMarginTop="@dimen/search_view_inset"
+                app:floatingSearch_searchHint="Search..."
+                app:floatingSearch_showSearchKey="true"
+                app:floatingSearch_showVoiceInput="true"
+                app:floatingSearch_suggestionsListAnimDuration="250" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/search_results_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:clipToPadding="false"
+                android:visibility="gone"
+                android:paddingTop="100dp" />
+
+
+            <include
+                android:id="@+id/content_layout_first"
+                layout="@layout/content_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <include
+                android:id="@+id/content_layout_second"
+                layout="@layout/content_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                app:srcCompat="@drawable/main_item_first" />
+
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                app:srcCompat="@drawable/main_item_second" />
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
