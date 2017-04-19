@@ -2,6 +2,7 @@ package org.tuyinti;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,10 +10,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import org.tuyinti.adapter.ContactsAdapter;
+import org.tuyinti.bean.DataFactory;
+import org.tuyinti.bean.User;
+import org.tuyinti.bean.Word;
 import org.tuyinti.dummy.DummyContent;
 import org.tuyinti.dummy.DummyContent.DummyItem;
+import org.tuyinti.view.IndexView;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -21,75 +30,109 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class ContactFragment extends BaseFragment{
+public class ContactFragment extends BaseFragment implements View.OnClickListener{
 
-    // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
-    private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
-    public ContactFragment() {
-    }
+    private static final String TAG = "ContactsFragment";
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static ContactFragment newInstance(int columnCount) {
-        ContactFragment fragment = new ContactFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private RecyclerView recyclerView;
+    private IndexView indexView;
+    private TextView tvWord;
+    private List<User>listFriends;
+    private ContactsAdapter adapter;
+    private LinearLayoutManager layoutManager;
+    private Word words[] = new Word[26]; //26个字母表
 
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item_list_contact, container, false);
-
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_contacts, container, false);
+        recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        tvWord = (TextView)view.findViewById(R.id.tv_word);
+        indexView = (IndexView)view.findViewById(R.id.index_view);
+        indexView.addOnIndexListener(new IndexView.OnIndexListener() {
+            @Override
+            public void onSelectedIndex(int index, String word) {
+                tvWord.setText(word);
+                if(index-1 >=0 && index-1 <26) {
+                    int dex = words[index - 1].index;
+                    layoutManager.scrollToPositionWithOffset(dex, 0);
+                }
             }
-            recyclerView.setAdapter(new ContactAdapter(DummyContent.ITEMS, mListener));
-        }
+
+            @Override
+            public void onStart(int index, String word) {
+                tvWord.setVisibility(View.VISIBLE);
+                tvWord.setText(word);
+            }
+
+            @Override
+            public void onEnd() {
+                tvWord.setVisibility(View.GONE);
+            }
+        });
         return view;
     }
 
-
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        initData();
+    }
+
+    private void initData() {
+        listFriends = DataFactory.createFriends(80);
+        Collections.sort(listFriends, new Comparator<User>() {
+            @Override
+            public int compare(User user, User t1) {
+                return user.name.compareTo(t1.name);
+            }
+        });
+        initWord();
+        adapter = new ContactsAdapter(getContext());
+        adapter.setDatas(listFriends);
+       // recyclerView.setAdapter(adapter);
+        recyclerView.addItemDecoration(new ContactsDividerItemDecoration(getContext(), words));
+    }
+
+    //初始化字母表
+    private void initWord() {
+        int in = 0;
+        int k = 0;
+        String word = "";
+        for(int i=0; i<listFriends.size(); i++){
+            String w1 = listFriends.get(i).name.substring(0,1);
+            if(word.equals(w1)){
+                continue;
+            }
+            word = w1;
+            in = i;
+            for(; k<words.length; k++){
+                String w2 = IndexView.INDEX_KEY[k + 1];
+                if(word.compareTo(w2) < 0)
+                    break;
+                words[k] = new Word();
+                words[k].title = IndexView.INDEX_KEY[k + 1];
+                words[k].index = in;
+            }
+        }
+        for(; k<26; k++){
+            words[k] = new Word();
+            words[k].title = IndexView.INDEX_KEY[k+1];
+            words[k].index = in;
+        }
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    public void onClick(View view) {
+
     }
 
     @Override
     public boolean onActivityBackPress() {
         return false;
     }
-
-
 }

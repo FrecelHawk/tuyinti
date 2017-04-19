@@ -166,9 +166,9 @@ public class SprotsFragment extends BaseFragment {
 
 
         setListImage();
-        setupFloatingSearch();
+/*        setupFloatingSearch();
         setupResultsList();
-        setupDrawer();
+        setupDrawer();*/
     }
 
     private void setupDrawer() {

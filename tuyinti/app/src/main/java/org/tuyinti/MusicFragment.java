@@ -162,10 +162,10 @@ public class MusicFragment extends BaseFragment {
 
 
 
-        setListImage();
+        setListImage();  /*
         setupFloatingSearch();
         setupResultsList();
-        setupDrawer();
+        setupDrawer();*/
     }
 
     private void setupDrawer() {

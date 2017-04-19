@@ -156,10 +156,11 @@ public class ColoringFragment extends BaseFragment {
 
 
 
-        setListImage();
+       setListImage();
+        /*
         setupFloatingSearch();
         setupResultsList();
-        setupDrawer();
+        setupDrawer();*/
     }
 
     private void setupDrawer() {

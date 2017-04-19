@@ -133,15 +133,73 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:weightSum="1"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_thirdparty" />
+
+        <include
+            android:id="@+id/line_frist"
+            layout="@layout/line_layout"
+            android:layout_weight="0.3"
+            android:layout_width="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_weight="0.4"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="第三方账号登陆"
+            />
+
+        <include
+            android:id="@+id/line_second"
+            layout="@layout/line_layout"
+            android:layout_weight="0.3"
+            android:layout_width="0dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:weightSum="1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/qqView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_qq"
+            android:layout_weight="0.3"/>
+
+        <ImageView
+            android:id="@+id/wechatView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_wechat"
+            android:layout_weight="0.3"/>
+
+        <ImageView
+            android:id="@+id/sinView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_sin"
+            android:layout_weight="0.3"/>
+
+
+    </LinearLayout>
+
+
 
 
 </LinearLayout>
