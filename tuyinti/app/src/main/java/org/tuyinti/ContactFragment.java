@@ -43,6 +43,8 @@ public class ContactFragment extends BaseFragment implements View.OnClickListene
     private LinearLayoutManager layoutManager;
     private Word words[] = new Word[26]; //26个字母表
 
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -94,7 +96,7 @@ public class ContactFragment extends BaseFragment implements View.OnClickListene
         initWord();
         adapter = new ContactsAdapter(getContext());
         adapter.setDatas(listFriends);
-       // recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new ContactsDividerItemDecoration(getContext(), words));
     }
 

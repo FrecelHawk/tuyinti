@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import org.tuyinti.dummy.DummyContent;
 import org.tuyinti.dummy.DummyContent.DummyItem;
+import org.tuyinti.utils.ResourceUtils;
 import org.tuyinti.view.SlideView;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class MessageFragment extends BaseFragment implements View.OnClickListene
     private RecyclerView mRecyclerView;
     private SlideView mLastSlideViewWithStatusOn;
 
-    private List<String> datas;
+    private List<Integer> datas;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -71,11 +72,14 @@ public class MessageFragment extends BaseFragment implements View.OnClickListene
 
         mRecyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
-        datas = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        datas = new ArrayList<Integer>();
+       /* for (int i = 0; i < 20; i++) {
             datas.add("测试数据--" + i);
-        }
+        }*/
 
+        datas.add(R.drawable.msg_item1);
+        datas.add(R.drawable.msg_item2);
+        datas.add(R.drawable.msg_item3);
         LinearLayoutManager layout = new LinearLayoutManager(getContext());
         layout.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layout);
@@ -98,6 +102,7 @@ public class MessageFragment extends BaseFragment implements View.OnClickListene
             public void onBindViewHolder(MyViewHolder holder, int position) {
                 // holder.mName.setText(datas.get(position));
 //                holder.mDelete.setOnClickListener(MainActivity.this);
+                holder.image.setImageDrawable(ResourceUtils.getDrawable(datas.get(position)));
             }
 
             @Override
@@ -152,13 +157,12 @@ public class MessageFragment extends BaseFragment implements View.OnClickListene
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView mName;
-        TextView mDelete;
+        ImageView image;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-  /*          mName = (ImageView) itemView.findViewById(R.id.name);
-            mDelete = (TextView) itemView.findViewById(R.id.delete);*/
+            image = (ImageView) itemView.findViewById(R.id.name);
+
         }
     }
 }
