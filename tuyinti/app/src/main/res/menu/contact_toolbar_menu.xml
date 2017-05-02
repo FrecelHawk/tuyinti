@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="发 群 聊"
+        />
+
+    <item
+        android:title="加 朋 友"
+        />
+
+    <item
+        android:title="扫 一 扫"
+        />
+
+
+    <item
+        android:title=""
+        app:showAsAction="ifRoom" />
+</menu>

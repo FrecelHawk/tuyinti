@@ -1,7 +1,14 @@
 package org.tuyinti;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 
@@ -13,6 +20,9 @@ import org.tuyinti.dummy.DummyContent;
 
 public abstract class BaseFragment extends Fragment implements OnListFragmentInteractionListener {
 
+
+    Activity mActivity;
+    AppCompatActivity mAppCompatActivity;
 
     private BaseFragmentCallBacks mCallbacks;
 
@@ -45,4 +55,25 @@ public abstract class BaseFragment extends Fragment implements OnListFragmentInt
     }
 
     public abstract boolean onActivityBackPress();
+
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mActivity = getActivity();
+    }
+
+    public Toolbar initToolbar(int toolbarId, int title) {
+        setHasOptionsMenu(true);
+        AppCompatActivity mAppCompatActivity = (AppCompatActivity) mActivity;
+        Toolbar toolbar = (Toolbar) mAppCompatActivity.findViewById(toolbarId);
+        mAppCompatActivity.setSupportActionBar(toolbar);
+        ActionBar actionBar = mAppCompatActivity.getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(false);
+
+        }
+        return toolbar;
+    }
 }

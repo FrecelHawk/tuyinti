@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <include
-            layout="@layout/navigation_title"
+            layout="@layout/contact_toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

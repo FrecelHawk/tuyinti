@@ -1,13 +1,12 @@
 package org.tuyinti;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -16,8 +15,6 @@ import org.tuyinti.adapter.ContactsAdapter;
 import org.tuyinti.bean.DataFactory;
 import org.tuyinti.bean.User;
 import org.tuyinti.bean.Word;
-import org.tuyinti.dummy.DummyContent;
-import org.tuyinti.dummy.DummyContent.DummyItem;
 import org.tuyinti.view.IndexView;
 
 import java.util.Collections;
@@ -49,6 +46,7 @@ public class ContactFragment extends BaseFragment implements View.OnClickListene
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contacts, container, false);
+
         recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -81,7 +79,7 @@ public class ContactFragment extends BaseFragment implements View.OnClickListene
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        initToolbar(R.id.toolbar,R.string.title_home);
         initData();
     }
 
@@ -136,5 +134,15 @@ public class ContactFragment extends BaseFragment implements View.OnClickListene
     @Override
     public boolean onActivityBackPress() {
         return false;
+    }
+
+
+    //处理菜单
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+        inflater.inflate(R.menu.contact_toolbar_menu, menu);
+
     }
 }

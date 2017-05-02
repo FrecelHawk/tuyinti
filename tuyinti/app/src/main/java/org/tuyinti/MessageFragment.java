@@ -2,11 +2,14 @@ package org.tuyinti;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -114,6 +117,11 @@ public class MessageFragment extends BaseFragment implements View.OnClickListene
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initToolbar(R.id.toolbar,R.string.title_home);
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -164,5 +172,15 @@ public class MessageFragment extends BaseFragment implements View.OnClickListene
             image = (ImageView) itemView.findViewById(R.id.name);
 
         }
+    }
+
+
+    //处理菜单
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+        inflater.inflate(R.menu.msg_toolbar_menu, menu);
+
     }
 }
