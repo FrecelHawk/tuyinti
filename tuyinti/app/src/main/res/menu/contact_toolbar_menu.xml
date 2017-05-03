@@ -2,14 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/send_group"
         android:title="发 群 聊"
         />
 
     <item
+        android:id="@+id/add_friend"
         android:title="加 朋 友"
         />
 
     <item
+        android:id="@+id/scan_code"
         android:title="扫 一 扫"
         />
 

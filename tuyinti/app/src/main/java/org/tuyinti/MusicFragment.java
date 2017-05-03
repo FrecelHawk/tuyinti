@@ -28,6 +28,12 @@ import org.tuyinti.adapter.SearchResultsListAdapter;
 import org.tuyinti.data.ColorSuggestion;
 import org.tuyinti.data.ColorWrapper;
 import org.tuyinti.data.DataHelper;
+import org.tuyinti.page.ClCourse;
+import org.tuyinti.page.ClExercise;
+import org.tuyinti.page.ClInstitution;
+import org.tuyinti.page.ClTeacher;
+import org.tuyinti.page.Cldynamic;
+import org.tuyinti.utils.ActivityStartUtil;
 import org.tuyinti.utils.ResourceUtils;
 import org.tuyinti.view.ImageCycleView;
 
@@ -159,6 +165,46 @@ public class MusicFragment extends BaseFragment {
         //Tab8
         ((TextView)(view.findViewById(R.id.content_layout_second).findViewById(R.id.tab4).findViewById(R.id.viewTxt))).setText("活动");
         ((ImageView)(view.findViewById(R.id.content_layout_second).findViewById(R.id.tab4).findViewById(R.id.imageView5))).setImageDrawable(ResourceUtils.getDrawable(R.drawable.yinyue8));
+
+
+
+        ((TextView)view.findViewById(R.id.navigation).findViewById(R.id.textView1)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityStartUtil.start(getActivity(), ClInstitution.class);
+            }
+        });
+
+
+        ((TextView)view.findViewById(R.id.navigation).findViewById(R.id.textView2)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityStartUtil.start(getActivity(), ClTeacher.class);
+            }
+        });
+
+
+        ((TextView)view.findViewById(R.id.navigation).findViewById(R.id.textView3)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityStartUtil.start(getActivity(), Cldynamic.class);
+            }
+        });
+
+        ((TextView)view.findViewById(R.id.navigation).findViewById(R.id.textView4)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityStartUtil.start(getActivity(), ClCourse.class);
+            }
+        });
+
+
+        ((TextView)view.findViewById(R.id.navigation).findViewById(R.id.textView5)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityStartUtil.start(getActivity(), ClExercise.class);
+            }
+        });
 
 
 

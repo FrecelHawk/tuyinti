@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -15,6 +16,19 @@ import org.tuyinti.adapter.ContactsAdapter;
 import org.tuyinti.bean.DataFactory;
 import org.tuyinti.bean.User;
 import org.tuyinti.bean.Word;
+import org.tuyinti.page.CnAddFriend;
+import org.tuyinti.page.CnGroup;
+import org.tuyinti.page.CnInstitution;
+import org.tuyinti.page.CnMy;
+import org.tuyinti.page.CnScanCode;
+import org.tuyinti.page.CnSendGroup;
+import org.tuyinti.page.MsgFilterActivity;
+import org.tuyinti.page.MsgGroupActvitiy;
+import org.tuyinti.page.MsgInstitutionActivity;
+import org.tuyinti.page.MsgNewGroupActivity;
+import org.tuyinti.page.MsgPeople;
+import org.tuyinti.page.MsgPublishActivity;
+import org.tuyinti.utils.ActivityStartUtil;
 import org.tuyinti.view.IndexView;
 
 import java.util.Collections;
@@ -71,6 +85,27 @@ public class ContactFragment extends BaseFragment implements View.OnClickListene
             @Override
             public void onEnd() {
                 tvWord.setVisibility(View.GONE);
+            }
+        });
+        //机构
+        ((TextView)view.findViewById(R.id.textView1)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityStartUtil.start(getActivity(), CnInstitution.class);
+            }
+        });
+        //群组
+        ((TextView)view.findViewById(R.id.textView2)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityStartUtil.start(getActivity(), CnGroup.class);
+            }
+        });
+        //我
+        ((TextView) view.findViewById(R.id.textView3)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityStartUtil.start(getActivity(), CnMy.class);
             }
         });
         return view;
@@ -144,5 +179,21 @@ public class ContactFragment extends BaseFragment implements View.OnClickListene
         menu.clear();
         inflater.inflate(R.menu.contact_toolbar_menu, menu);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case  R.id.send_group:
+                ActivityStartUtil.start(getActivity(), CnSendGroup.class);
+                break;
+            case  R.id.add_friend:
+                ActivityStartUtil.start(getActivity(), CnAddFriend.class);
+                break;
+            case  R.id.scan_code:
+                ActivityStartUtil.start(getActivity(), CnScanCode.class);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

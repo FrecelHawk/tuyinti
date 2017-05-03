@@ -2,14 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/publish"
         android:title="发   布"
          />
 
     <item
+        android:id="@+id/filter"
         android:title="筛   选"
        />
 
     <item
+        android:id="@+id/create_group"
         android:title="创建群组"
         />
 

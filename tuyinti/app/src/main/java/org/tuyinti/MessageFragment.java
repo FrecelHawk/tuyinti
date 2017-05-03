@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,6 +19,13 @@ import android.widget.Toast;
 
 import org.tuyinti.dummy.DummyContent;
 import org.tuyinti.dummy.DummyContent.DummyItem;
+import org.tuyinti.page.MsgFilterActivity;
+import org.tuyinti.page.MsgGroupActvitiy;
+import org.tuyinti.page.MsgInstitutionActivity;
+import org.tuyinti.page.MsgNewGroupActivity;
+import org.tuyinti.page.MsgPeople;
+import org.tuyinti.page.MsgPublishActivity;
+import org.tuyinti.utils.ActivityStartUtil;
 import org.tuyinti.utils.ResourceUtils;
 import org.tuyinti.view.SlideView;
 
@@ -113,6 +121,27 @@ public class MessageFragment extends BaseFragment implements View.OnClickListene
                 return datas.size();
             }
         });
+        //机构
+        ((TextView)view.findViewById(R.id.textView1)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityStartUtil.start(getActivity(), MsgInstitutionActivity.class);
+            }
+        });
+        //人
+        ((TextView)view.findViewById(R.id.textView2)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               ActivityStartUtil.start(getActivity(), MsgPeople.class);
+            }
+        });
+        //群组
+        ((TextView) view.findViewById(R.id.textView3)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityStartUtil.start(getActivity(), MsgNewGroupActivity.class);
+            }
+        });
 
         return view;
     }
@@ -182,5 +211,22 @@ public class MessageFragment extends BaseFragment implements View.OnClickListene
         menu.clear();
         inflater.inflate(R.menu.msg_toolbar_menu, menu);
 
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case  R.id.publish:
+                ActivityStartUtil.start(getActivity(), MsgPublishActivity.class);
+                break;
+            case  R.id.filter:
+                ActivityStartUtil.start(getActivity(), MsgFilterActivity.class);
+                break;
+            case  R.id.create_group:
+                ActivityStartUtil.start(getActivity(), MsgGroupActvitiy.class);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
